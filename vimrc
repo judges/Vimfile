@@ -1,8 +1,14 @@
 if has("gui_running")
   "set guioptions-=T
   set guioptions+=c
-  set lines=50
-  set columns=100
+  set lines=45
+  set columns=140
+endif
+
+if has('gui')
+  if has('gui_gtk2')
+    au GUIEnter * :set lines=99999 columns=99999
+  endif
 endif
 
 "set guifont=Terminus:h12
@@ -35,9 +41,9 @@ set smarttab
 set shiftwidth=2
 set autoindent
 set expandtab
-
-" Use Objective-C syntax highlighting on *.m and *.h file types.
-au BufNewFile,BufRead *.m,*.h set ft=objc
+set et
+set ai
+set cin
 
 " Show relative paths in bufExplorer
 let g:bufExplorerShowRelativePath=1
@@ -234,6 +240,7 @@ set smartcase
 "
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+set tags=tags
 
 highlight TooLongLine term=reverse ctermfg=Yellow ctermbg=Red
 match TooLongLine /.\%>81v/
